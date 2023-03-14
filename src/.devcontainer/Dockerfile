@@ -1,4 +1,4 @@
-FROM osrf/ros:foxy-desktop
+FROM osrf/ros:humble-desktop
 RUN echo "Europe/Utc" > /etc/timezone
 # RUN ln -fs /usr/share/zoneinfo/Europe/Rome /etc/localtime
 
@@ -37,13 +37,13 @@ RUN apt-get update -q && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-RUN apt-get update -q && \
-        export DEBIAN_FRONTEND=noninteractive && \
-    apt-get -y --no-install-recommends install libgl1-mesa-glx libgl1-mesa-dri && \
-    apt-get install mesa-utils && \
-    rm -rf /var/lib/apt/lists/*
-RUN sed -i 's/--no-generate//g' /usr/share/bash-completion/completions/apt-get && \
-    sed -i 's/--no-generate//g' /usr/share/bash-completion/completions/apt-cache
+# RUN apt-get update -q && \
+#         export DEBIAN_FRONTEND=noninteractive && \
+#     apt-get -y --no-install-recommends install libgl1-mesa-glx libgl1-mesa-dri && \
+#     apt-get install mesa-utils && \
+#     rm -rf /var/lib/apt/lists/*
+# RUN sed -i 's/--no-generate//g' /usr/share/bash-completion/completions/apt-get && \
+#     sed -i 's/--no-generate//g' /usr/share/bash-completion/completions/apt-cache
 WORKDIR /root/
 
 RUN sed -i "s/#force_color_prompt=yes/force_color_prompt=yes/g" /root/.bashrc
