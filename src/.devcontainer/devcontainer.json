@@ -1,11 +1,11 @@
 {
     "name": "ROS 2 Development Container",
     "privileged": true,
-    "remoteUser": "root",
+    "remoteUser": "USERNAME",
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
-            "USERNAME": "root"
+            "USERNAME": "USERNAME"
         }
     },
     "workspaceFolder": "/home/ws",
@@ -34,9 +34,9 @@
     "mounts": [
        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
         "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
-        "source=${localWorkspaceFolder}/../cache/foxy/build,target=/home/ws/build,type=bind",
-        "source=${localWorkspaceFolder}/../cache/foxy/install,target=/home/ws/install,type=bind",
-        "source=${localWorkspaceFolder}/../cache/foxy/log,target=/home/ws/log,type=bind"
+        "source=${localWorkspaceFolder}/../cache/build,target=/home/ws/build,type=bind",
+        "source=${localWorkspaceFolder}/../cache/install,target=/home/ws/install,type=bind",
+        "source=${localWorkspaceFolder}/../cache/log,target=/home/ws/log,type=bind"
     ],
-    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R root /home/ws/"
+    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R USERNAME /home/ws/"
 }
