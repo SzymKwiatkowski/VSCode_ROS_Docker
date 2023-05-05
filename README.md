@@ -26,6 +26,9 @@ source /opt/ros/$ROS_DISTRO/setup.bash
 rviz2
 ```
 
+## Nvidia support
+If user wants to use nvidia container toolbox inside of the container they can uncomment run args in src/.devcontainer/devcontainer.json
+
 # Usefull information
 - To start container go to `src` directory and launch `Visual Studio Code` in there. Afterwards use `Dev Containers: Rebuild and Reopen in Container`
 - If build is failing check `devcontainer.json` and `Dockerfile` contents, especially usage of USERNAME variables. If something else is failing check build log

@@ -12,3 +12,8 @@
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# Local cached files
+cache/build/
+cache/install/
+cache/log/
