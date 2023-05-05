@@ -29,14 +29,18 @@
     },
     "runArgs": [
         "--net=host",
-        "-e", "DISPLAY=${env:DISPLAY}"
+        "-e", "DISPLAY=${env:DISPLAY}",
+        // Uncomment to turn on nvidia container toolkit support
+        // "--runtime=nvidia",
+        // "--gpus", "all"
     ],
     "mounts": [
        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
         "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
         "source=${localWorkspaceFolder}/../cache/build,target=/home/ws/build,type=bind",
         "source=${localWorkspaceFolder}/../cache/install,target=/home/ws/install,type=bind",
-        "source=${localWorkspaceFolder}/../cache/log,target=/home/ws/log,type=bind"
+        "source=${localWorkspaceFolder}/../cache/log,target=/home/ws/log,type=bind",
+        "source=${localWorkspaceFolder}/../cache/.vscode,target=/home/ws/.vscode,type=bind"
     ],
     "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R USERNAME /home/ws/"
 }
